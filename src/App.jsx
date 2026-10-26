@@ -101,7 +101,7 @@ function App() {
   useEffect(() => {
     const loadQuestions = async () => {
       try {
-        const response = await fetch('http://localhost:5001/api/questions');
+        const response = await fetch('https://cybervexis-server.onrender.com/api/questions');
         if (!response.ok) throw new Error("Failed to fetch questions");
         const data = await response.json();
         setQuestions(data);
@@ -589,7 +589,7 @@ function App() {
     };
 
     try {
-      await fetch('http://localhost:5001/api/leaderboard', {
+      await fetch('https://cybervexis-server.onrender.com/api/leaderboard', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)

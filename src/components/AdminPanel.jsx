@@ -21,7 +21,7 @@ const AdminPanel = ({ onBack, triggerScoreUpdate }) => {
   const fetchQuestions = async () => {
     try {
       setLoading(true);
-      const res = await fetch('http://localhost:5001/api/questions');
+      const res = await fetch('https://cybervexis-server.onrender.com/api/questions');
       if (!res.ok) throw new Error("Failed to fetch");
       const data = await res.json();
       setQuestions(data);
@@ -79,7 +79,7 @@ const AdminPanel = ({ onBack, triggerScoreUpdate }) => {
       let savedQ;
       if (isEditing) {
         // PUT
-        const res = await fetch(`http://localhost:5001/api/questions/${currentQ.id}`, {
+        const res = await fetch(`https://cybervexis-server.onrender.com/api/questions/${currentQ.id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(currentQ)
@@ -89,7 +89,7 @@ const AdminPanel = ({ onBack, triggerScoreUpdate }) => {
         showNotification("Question updated successfully!");
       } else {
         // POST
-        const res = await fetch('http://localhost:5001/api/questions', {
+        const res = await fetch('https://cybervexis-server.onrender.com/api/questions', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(currentQ)
@@ -128,7 +128,7 @@ const AdminPanel = ({ onBack, triggerScoreUpdate }) => {
     if (!confirm("Are you sure you want to delete this question?")) return;
 
     try {
-      const res = await fetch(`http://localhost:5001/api/questions/${id}`, {
+      const res = await fetch(`https://cybervexis-server.onrender.com/api/questions/${id}`, {
         method: 'DELETE'
       });
       if (!res.ok) throw new Error("Delete failed");
@@ -146,7 +146,7 @@ const AdminPanel = ({ onBack, triggerScoreUpdate }) => {
     if (!confirm(`Are you sure you want to reset ${type}? This action is irreversible.`)) return;
 
     try {
-      const res = await fetch('http://localhost:5001/api/reset', {
+      const res = await fetch('https://cybervexis-server.onrender.com/api/reset', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ type })

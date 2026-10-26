@@ -11,7 +11,7 @@ const Leaderboard = ({ scoresVersion }) => {
     try {
       setLoading(true);
       // Try fetching from the server API, fallback to local storage if API fails or server not started
-      const response = await fetch('http://localhost:5001/api/leaderboard');
+      const response = await fetch('https://cybervexis-server.onrender.com/api/leaderboard');
       if (!response.ok) throw new Error("Failed to fetch from server");
       const data = await response.json();
       setLeaderboard(data);
